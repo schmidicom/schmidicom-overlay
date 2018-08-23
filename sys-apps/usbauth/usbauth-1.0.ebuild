@@ -25,7 +25,7 @@ RDEPEND="sys-libs/libusbauth-configparser
 	virtual/udev
 	virtual/libc"
 DEPEND="${RDEPEND}"
-PDEPEND="notifier? ( sys-auth/usbauth-notifier )"
+PDEPEND="notifier? ( sys-apps/usbauth-notifier )"
 
 src_unpack() {
 	case "${PV}" in
