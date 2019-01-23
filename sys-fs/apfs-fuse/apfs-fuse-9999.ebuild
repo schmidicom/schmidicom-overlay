@@ -14,10 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/icu
-        sys-devel/gcc
+DEPEND="app-arch/bzip2
         sys-fs/fuse
-        sys-libs/glibc"
+        sys-libs/zlib
+        sys-libs/glibc
+        sys-devel/gcc"
 RDEPEND="${DEPEND}"
 
 src_configure() {
@@ -31,8 +32,8 @@ src_compile() {
 
 src_install() {
     cd ${BUILD_DIR}
-    dosbin bin/apfs-dump
-    dosbin bin/apfs-dump-quick
-    dosbin bin/apfs-fuse
-    dosbin bin/apfs-test-crypto
+    dosbin apfs-dump
+    dosbin apfs-dump-quick
+    dosbin apfs-fuse
+    #dosbin bin/lzfse
 }
