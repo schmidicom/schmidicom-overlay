@@ -27,15 +27,16 @@ need_apache2
 APACHE_MODULESDIR="/usr/lib64/apache2/modules"
 
 src_unpack() {
-    unpack ${A} || die "unpack failed"
+	unpack ${A} || die "unpack failed"
 }
 
 src_configure() {
-    econf || die "econf failed"
+	econf || die "econf failed"
 }
 
 src_compile() {
-	apache-module_src_compile || die "compile failed"
+	#apache-module_src_compile || die "compile failed"
+	emake || die "emake failed"
 }
 
 src_install() {
