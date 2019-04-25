@@ -22,8 +22,8 @@ APACHE2_MOD_CONF="70_${PN}"
 APACHE2_MOD_DEFINE="MAXMINDDB"
 need_apache2
 
-# for install der the module in the right place
-# is probably not the best solution, sry
+# for install the module in the right place.
+# is probably not the best solution, sry.
 APACHE_MODULESDIR="/usr/lib64/apache2/modules"
 
 src_unpack() {
@@ -35,7 +35,7 @@ src_configure() {
 }
 
 src_compile() {
-	# "apache-module_src_compile" builds not working library
+	# "apache-module_src_compile" builds not working library.
 	# https://github.com/maxmind/mod_maxminddb/issues/38
 	emake || die "emake failed"
 }
