@@ -3,19 +3,18 @@
 # $Id$
 
 EAPI=7
-inherit linux-info
+inherit eutils
 
 DESCRIPTION="Master PDF Editor from Code Industry Ltd."
 HOMEPAGE="https://code-industry.net/free-pdf-editor/"
-SRC_URI="master-pdf-editor-${PV}_qt5.amd64.deb"
+SRC_URI="amd64? ( https://code-industry.net/public/${P}-qt5.amd64.tar.gz )"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="app-arch/deb2targz
-        dev-libs/nspr
+DEPEND="dev-libs/nspr
         dev-libs/nss
         dev-qt/qtcore
         dev-qt/qtgui
@@ -31,24 +30,13 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
 
-pkg_nofetch() {
-    einfo "Please download the deb-Package"
-    einfo "master-pdf-editor-${PV}_qt5.amd64.deb"
-    einfo "from ${HOMEPAGE}"
-    einfo "and place them in your DISTDIR directory."
-}
-
 src_unpack() {
     unpack ${A}
 }
 
-src_configure() {
-    rm control.tar.gz
-    rm debian-binary
-    tar -xpf data.tar.xz || die
-    rm data.tar.xz
-}
-
 src_install() {
-    cp -a ${S}/* ${D}
+    mkdir -p ${D}/opt/master-pdf-editor-5
+    cp -a ${S}/master-pdf-editor-5/* ${D}/opt/master-pdf-editor-5/
+    mkdir -p ${D}/usr/share/applications
+    mv ${D}/opt/master-pdf-editor-5/masterpdfeditor5.desktop ${D}/usr/share/applications/
 }
