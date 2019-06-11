@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/bzip2
-        sys-fs/fuse
+        sys-fs/fuse:3
         sys-libs/zlib
         sys-libs/glibc
         sys-devel/gcc"
