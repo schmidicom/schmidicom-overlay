@@ -10,16 +10,18 @@ SRC_URI="https://github.com/performancecopilot/${PN}/archive/${PV}.tar.gz -> ${P
 LICENSE="LGPL-2.1+"
 
 KEYWORDS="x86 amd64"
-IUSE="+discovery +infiniband +manager +perfevent +pie python +ssp systemd +threads +webapi X"
+IUSE="+discovery +infiniband +manager +perfevent +pie python +ssp systemd +threads +webapi"
 SLOT="0"
 
 DEPEND=" systemd? ( sys-apps/systemd )
-         X? ( x11-libs/libXt )
          python? ( dev-lang/python )
          perfevent? ( dev-libs/libpfm )
          discovery? ( net-dns/avahi[dbus] )
          dev-qt/qtcore:5
          dev-qt/qtprintsupport:5
+         dev-qt/qtsvg:5
+         dev-qt/qtconcurrent:5
+         x11-libs/libXt
          acct-user/pcp"
 RDEPEND="${DEPEND}"
 
@@ -33,8 +35,7 @@ scr_configure() {
                 $(use_with systemd) \
                 $(use_with perfevent) \
                 $(use_with manager) \
-                $(use_with webapi) \
-                $(use_with X x)
+                $(use_with webapi)
 }
 
 src_compile() {
