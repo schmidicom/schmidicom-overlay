@@ -39,6 +39,7 @@ scr_configure() {
 }
 
 src_compile() {
+        addpredict /var/lib/tmp/
         emake
 }
 
