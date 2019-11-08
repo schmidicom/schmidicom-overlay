@@ -41,6 +41,7 @@ scr_configure() {
 
 src_compile() {
         addwrite /var/lib/tmp/
+        export MAKEOPTS="-j1"
         emake
 }
 
