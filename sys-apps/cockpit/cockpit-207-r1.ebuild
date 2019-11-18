@@ -26,6 +26,7 @@ DEPEND="libvirt? ( app-emulation/libvirt )
         ssh? ( net-libs/libssh )
         dev-util/gdbus-codegen
         net-libs/nodejs[npm]
+        net-libs/glib-networking
         sys-fs/udisks
         app-admin/sudo"
 RDEPEND="${DEPEND}"
