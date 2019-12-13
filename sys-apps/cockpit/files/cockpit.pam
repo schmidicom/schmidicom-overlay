@@ -1,7 +1,8 @@
-#%PAM-1.0
-auth        required    pam_unix.so
-auth        optional    pam_reauthorize.so prepare
+auth        required    pam_unix.so likeauth nullok
+
 account     required    pam_unix.so
--session    optional    pam_systemd.so
+
+password    required    pam_unix.so nullok sha512 shadow
+
 session     required    pam_unix.so
-session     optional    pam_reauthorize.so prepare
+-session    optional    pam_systemd.so
