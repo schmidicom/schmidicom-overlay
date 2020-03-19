@@ -23,7 +23,7 @@ DEPEND="libvirt? ( app-emulation/libvirt )
         lvm? ( sys-fs/lvm2 )
         networkmanager? ( net-misc/networkmanager )
         pcp? ( sys-apps/pcp )
-        ssh? ( net-libs/libssh )
+        ssh? ( net-libs/libssh[server] )
         dev-util/gdbus-codegen
         net-libs/nodejs[npm]
         net-libs/glib-networking
