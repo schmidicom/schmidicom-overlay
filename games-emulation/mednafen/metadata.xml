@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>https://github.com/schmidicom/schmidicom-overlay/issues</bugs-to>
+    <changelog>https://github.com/schmidicom/schmidicom-overlay/commits/master</changelog>
+  </upstream>
+  <maintainer type="person">
+    <email>schmidicom@gmail.com</email>
+    <name>Stefan Schmid</name>
+  </maintainer>
+  <use>
+    <flag name="debugger">Build with internal debugger.</flag>
+    <flag name="fancy-scalers">Build with fancy(2xsai, hq2x, etc.) CPU-intensive software video scalers.</flag>
+    <flag name="apple2">Build with Apple II+ emulation.</flag>
+    <flag name="gameboy">Build with GameBoy emulation.</flag>
+    <flag name="gameboy-advance">Build with GameBoy Advance emulation.</flag>
+    <flag name="atari-lynx">Build with Atari Lynx emulation.</flag>
+    <flag name="sega-megadrive">Build with Sega Genesis/MegaDrive emulation.</flag>
+    <flag name="nes">Build with Nintendo Entertainment System emulation.</flag>
+    <flag name="neo-geo-pocket">Build with Nintendo Entertainment System emulation.</flag>
+    <flag name="pc-engine">Build with Nintendo Entertainment System emulation.</flag>
+    <flag name="pcfx">Build with Nintendo Entertainment System emulation.</flag>
+    <flag name="playstation">Build with Nintendo Entertainment System emulation.</flag>
+    <flag name="sms-gg">Build with Nintendo Entertainment System emulation.</flag>
+    <flag name="snes">Build with SNES emulation.</flag>
+    <flag name="sega-saturn">Build with Sega Saturn emulation.</flag>
+    <flag name="virtual-boy">Build with Virtual Boy emulation.</flag>
+    <flag name="wonderswan">Build with WonderSwan emulation.</flag>
+  </use>
+</pkgmetadata>
