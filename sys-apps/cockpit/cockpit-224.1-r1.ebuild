@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 KEYWORDS="x86 amd64"
-IUSE="debug doc libvirt lvm maintainer-mode networkmanager +pcp +ssh"
+IUSE="debug doc libvirt lvm maintainer-mode networkmanager -pcp +ssh"
 SLOT="0"
 
 DEPEND="libvirt? ( app-emulation/libvirt )
@@ -31,10 +31,10 @@ DEPEND="libvirt? ( app-emulation/libvirt )
         app-admin/sudo"
 RDEPEND="${DEPEND}"
 
-scr_configure() {
+src_configure() {
         econf \
-                $(use_enable debug)
-                $(use_enable doc)
+                $(use_enable debug) \
+                $(use_enable doc) \
                 $(use_enable maintainer-mode) \
                 $(use_enable pcp) \
                 $(use_enable ssh)
