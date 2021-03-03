@@ -16,10 +16,11 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 KEYWORDS="x86 amd64"
-IUSE="debug doc libvirt lvm maintainer-mode networkmanager -pcp +ssh"
+IUSE="debug doc firewalld libvirt lvm maintainer-mode networkmanager -pcp +ssh"
 SLOT="0"
 
-DEPEND="libvirt? ( app-emulation/libvirt )
+DEPEND="firewalld? ( net-firewall/firewalld )
+        libvirt? ( app-emulation/libvirt )
         lvm? ( sys-fs/lvm2 )
         networkmanager? ( net-misc/networkmanager )
         pcp? ( sys-apps/pcp )
