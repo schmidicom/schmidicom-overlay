@@ -10,7 +10,7 @@ SRC_URI="https://github.com/performancecopilot/${PN}/archive/${PV}.tar.gz -> ${P
 LICENSE="LGPL-2.1+"
 
 KEYWORDS="x86 amd64"
-IUSE="infiniband manager +perfevent pie qt5 ssp systemd +threads +webapi zeroconf"
+IUSE="infiniband manager +perfevent pie python qt5 ssp systemd +threads +webapi zeroconf"
 SLOT="0"
 
 DEPEND=" systemd? ( sys-apps/systemd )
@@ -20,7 +20,7 @@ DEPEND=" systemd? ( sys-apps/systemd )
                 dev-qt/qtprintsupport:5
                 dev-qt/qtsvg:5
                 dev-qt/qtconcurrent:5 )
-         dev-lang/python
+         python? ( dev-lang/python )
          dev-libs/json-glib
          x11-libs/libXt
          acct-user/pcp"
@@ -36,7 +36,9 @@ src_configure() {
                 $(use_with systemd) \
                 $(use_with perfevent) \
                 $(use_with manager) \
-                $(use_with webapi)
+                $(use_with webapi) \
+                $(use_with python python3) \
+                --without-python
 }
 
 src_compile() {
