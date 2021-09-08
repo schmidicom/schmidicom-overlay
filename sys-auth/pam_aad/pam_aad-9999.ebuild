@@ -1,8 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
-inherit git-r3 autotools
+EAPI=7
+inherit git-r3 autotools pam
 
 DESCRIPTION="Azure Active Directory PAM Module"
 HOMEPAGE="https://github.com/CyberNinjas/pam_aad"
@@ -19,7 +19,8 @@ DEPEND="dev-libs/jwt
 	dev-libs/jansson
 	dev-libs/openssl
 	sys-libs/pam
-	sys-apps/util-linux"
+	sys-apps/util-linux
+	net-misc/curl"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -30,7 +31,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static)
+		$(use_enable static) \
+		--with-pam-dir=$(getpam_mod_dir)
 }
 
 src_compile() {
