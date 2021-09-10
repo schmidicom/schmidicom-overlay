@@ -41,7 +41,6 @@ DEPEND=">=dev-python/alembic-1.6.5
 	>=dev-python/huey-2.3.2
 	>=dev-python/idna-2.3.2
 	>=dev-python/importlib_metadata-4.6.0
-	>=dev-python/importlib_resources-3.3.1
 	>=dev-python/itsdangerous-1.1.0
 	>=dev-python/jinja-2.11.3
 	>=dev-python/ldap3-2.9
@@ -80,3 +79,7 @@ DEPEND=">=dev-python/alembic-1.6.5
 	>=dev-python/zipp-3.5.0"
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+PATCHES=(
+        "${FILESDIR}"/fix_setup.patch
+)
