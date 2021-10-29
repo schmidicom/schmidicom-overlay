@@ -31,7 +31,10 @@ DEPEND="
 	openssl? ( >=dev-libs/openssl-0.9.8:0= )
 	sys-libs/glibc
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/openvpn
+	acct-user/openvpn
+"
 BDEPEND="virtual/pkgconfig"
 
 pkg_setup() {
