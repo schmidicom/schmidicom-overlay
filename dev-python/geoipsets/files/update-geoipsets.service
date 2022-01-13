@@ -1,0 +1,35 @@
+[Unit]
+Description=Update geoipsets
+Wants=network.target network-online.target
+After=network.target network-online.target
+AssertFileIsExecutable=/usr/bin/geoipsets
+AssertPathExists=/var/db
+
+[Service]
+Type=oneshot
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6
+#if firewall configuration is updated as part of this service, replace the 2 lines above with the 2 lines below
+#CapabilityBoundingSet=CAP_NET_ADMIN
+#RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=true
+NoNewPrivileges=true
+PrivateDevices=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+ProtectHostname=true
+LockPersonality=true
+ExecStart=/usr/bin/geoipsets --output-dir /var/db
+StandardOutput=journal
+StandardError=journal
