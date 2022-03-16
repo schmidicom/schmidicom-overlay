@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 KEYWORDS="x86 amd64"
-IUSE="debug doc firewalld libvirt lvm maintainer-mode networkmanager policykit -pcp +ssh"
+IUSE="doc firewalld libvirt lvm networkmanager policykit -pcp +ssh +client"
 SLOT="0"
 
 DEPEND="firewalld? ( net-firewall/firewalld )
@@ -38,11 +38,11 @@ PDEPEND="libvirt? (
 
 src_configure() {
         econf \
-                $(use_enable debug) \
                 $(use_enable doc) \
-                $(use_enable maintainer-mode) \
                 $(use_enable pcp) \
-                $(use_enable ssh)
+                $(use_enable ssh) \
+                $(use_enable client cockpit-client) \
+                $(use_enable policykit polkit)
 }
 
 src_compile() {
