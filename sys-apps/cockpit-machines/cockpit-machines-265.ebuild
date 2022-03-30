@@ -19,7 +19,9 @@ KEYWORDS="x86 amd64"
 IUSE=""
 SLOT="0"
 
-DEPEND="sys-apps/cockpit"
+DEPEND="sys-apps/cockpit
+	app-emulation/libvirt-dbus
+	"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/cockpit-machines
