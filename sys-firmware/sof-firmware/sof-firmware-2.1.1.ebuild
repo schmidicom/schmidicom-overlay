@@ -3,8 +3,9 @@
 
 EAPI=7
 
-DESCRIPTION="Sound Open Firmware (SOF) binary files"
+inherit linux-info
 
+DESCRIPTION="Sound Open Firmware (SOF) binary files"
 HOMEPAGE="https://www.sofproject.org https://github.com/thesofproject/sof https://github.com/thesofproject/sof-bin"
 SRC_URI="https://github.com/thesofproject/sof-bin/releases/download/v${PV}/sof-bin-v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -14,12 +15,19 @@ KEYWORDS="amd64"
 IUSE=""
 
 S=${WORKDIR}/sof-bin-v${PV}
-FW_DEST=${D}/lib/firmware/intel
 
 DEPEND=">=media-libs/alsa-lib-1.2.5
         >=media-libs/alsa-ucm-conf-1.2.5"
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+pkg_setup() {
+	if kernel_is lt 5 15; then
+		die 'Kernel is too old - need 5.15 or above'
+	fi
+	local CONFIG_CHECK="FW_LOADER"
+	linux-info_pkg_setup
+}
 
 src_install() {
 	mkdir -p ${D}/lib/firmware/intel || die
