@@ -12,12 +12,13 @@ SRC_URI="https://github.com/OpenVPN/openvpn/archive/refs/tags/v${PV}.zip -> ${P}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+lzo +lz4 +plugin_auth-pam plugin_down-root pkcs11 inotify +iproute2 mbedtls +openssl systemd"
+IUSE="async-push +iproute2 +lzo +lz4 mbedtls +openssl +plugins +plugin_auth-pam plugin_down-root pkcs11 systemd"
 
 REQUIRED_USE="
 	^^ ( openssl mbedtls )
 	pkcs11? ( !mbedtls )
-	inotify? ( || ( plugin_auth-pam plugin_down-root ) )
+	plugin_auth-pam? ( plugins )
+	plugin_down-root? ( plugins )
 "
 
 DEPEND="
@@ -28,7 +29,8 @@ DEPEND="
 	iproute2? ( sys-apps/iproute2[-minimal] )
 	systemd? ( sys-apps/systemd )
 	mbedtls? ( net-libs/mbedtls:= )
-	openssl? ( >=dev-libs/openssl-0.9.8:0= )
+	openssl? ( dev-libs/openssl
+		<dev-libs/openssl-3.0.0:0 )
 	sys-libs/glibc
 "
 RDEPEND="${DEPEND}
@@ -50,22 +52,17 @@ src_prepare() {
 src_configure() {
 	local -a myeconfargs
 
-	if use plugin_auth-pam || plugin_down-root ; then
-		myeconfargs+=(
-			--enable-plugins
-			$(use_enable plugin_auth-pam plugin-auth-pam)
-			$(use_enable plugin_down-root plugin-down-root)
-		)
-	fi
-
 	myeconfargs+=(
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
-		$(use_enable inotify async-push)
+		$(use_enable async-push)
 		$(use_enable lzo)
 		$(use_enable lz4)
 		$(use_enable pkcs11)
 		$(use_enable iproute2)
 		$(use_enable systemd)
+		$(use_enable plugins)
+		$(use_enable plugin_auth-pam plugin-auth-pam)
+		$(use_enable plugin_down-root plugin-down-root)
 	)
 
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
