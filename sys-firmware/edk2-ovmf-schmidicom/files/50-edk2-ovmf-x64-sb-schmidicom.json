@@ -1,12 +1,12 @@
 {
-    "description": "OVMF for x86_64, with SB+SMM, compiled by schmidicom",
+    "description": "OVMF for x86_64, with SB+SMM, empty varstore, compiled by schmidicom",
     "interface-types": [
         "uefi"
     ],
     "mapping": {
         "device": "flash",
         "executable": {
-            "filename": "/usr/share/edk2-ovmf-schmidicom/OVMF.fd",
+            "filename": "/usr/share/edk2-ovmf-schmidicom/OVMF_CODE.fd",
             "format": "raw"
         },
         "nvram-template": {
@@ -27,8 +27,7 @@
         "acpi-s4",
         "amd-sev",
         "requires-smm",
-        "secure-boot",
-        "verbose-dynamic"
+        "secure-boot"
     ],
     "tags": [
 
