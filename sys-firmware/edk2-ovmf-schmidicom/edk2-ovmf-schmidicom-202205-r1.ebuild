@@ -39,4 +39,5 @@ src_install() {
 	dodir /usr/share/qemu/firmware
 	insinto /usr/share/qemu/firmware
 	doins ${FILESDIR}/50-edk2-ovmf-x64-sb-schmidicom.json || die "Cannot install Firmware-JSON for QEMU!"
+	doins ${FILESDIR}/50-edk2-ovmf-x64-sb-enabled-schmidicom.json || die "Cannot install Firmware-JSON for QEMU!"
 }
