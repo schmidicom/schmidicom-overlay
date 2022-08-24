@@ -1,5 +1,5 @@
 {
-    "description": "OVMF for x86_64, with SB+SMM, SB Enabled, compiled by schmidicom",
+    "description": "OVMF for x86_64, with SB+SMM, enrolled-keys, compiled by schmidicom",
     "interface-types": [
         "uefi"
     ],
@@ -10,7 +10,7 @@
             "format": "raw"
         },
         "nvram-template": {
-            "filename": "/usr/share/edk2-ovmf-schmidicom/OVMF_VARS_sb-enabled.fd",
+            "filename": "/usr/share/edk2-ovmf-schmidicom/OVMF_VARS_enrolled-keys.fd",
             "format": "raw"
         }
     },
@@ -27,6 +27,7 @@
         "acpi-s4",
         "amd-sev",
         "requires-smm",
+        "enrolled-keys",
         "secure-boot"
     ],
     "tags": [

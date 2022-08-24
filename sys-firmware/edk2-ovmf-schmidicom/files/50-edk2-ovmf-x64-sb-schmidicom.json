@@ -1,5 +1,5 @@
 {
-    "description": "OVMF for x86_64, with SB+SMM, empty SB Certstore, compiled by schmidicom",
+    "description": "OVMF for x86_64, with SB+SMM, compiled by schmidicom",
     "interface-types": [
         "uefi"
     ],

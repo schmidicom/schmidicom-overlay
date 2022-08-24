@@ -32,10 +32,12 @@ src_install() {
 	insinto /usr/share/edk2-ovmf-schmidicom
 	doins OvmfX64/RELEASE_GCC5/FV/OVMF_CODE.fd || die "Cannot install OVMF_CODE!"
 	doins OvmfX64/RELEASE_GCC5/FV/OVMF_VARS.fd || die "Cannot install OVMF_VARS!"
+	doins ${FILESDIR}/OVMF_VARS_enrolled-keys.fd || die "Cannot install OVMF_VARS with enrolled keys!"
 	doins OvmfX64/RELEASE_GCC5/X64/EnrollDefaultKeys.efi || die "Cannot install EnrollDefaultKeys.efi!"
 
 	# Install JSON for QEMU
 	dodir /usr/share/qemu/firmware
 	insinto /usr/share/qemu/firmware
 	doins ${FILESDIR}/50-edk2-ovmf-x64-sb-schmidicom.json || die "Cannot install Firmware-JSON for QEMU!"
+	doins ${FILESDIR}/50-edk2-ovmf-x64-sb-enrolled-keys-schmidicom.json || die "Cannot install Firmware-JSON with enrolled keys for QEMU!"
 }
