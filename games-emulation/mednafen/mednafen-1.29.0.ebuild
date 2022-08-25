@@ -10,7 +10,7 @@ SRC_URI="https://mednafen.github.io/releases/files/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+alsa +debugger +sndfile jack system-mpcdec system-tremor system-lzo"
+IUSE="+alsa +debugger +flac jack system-mpcdec system-tremor system-lzo"
 
 RDEPEND="
         sys-devel/gcc
@@ -21,7 +21,7 @@ RDEPEND="
         virtual/opengl
         media-libs/libsdl2[joystick,opengl,sound,video]
         alsa? ( media-libs/alsa-lib )
-        sndfile? ( media-libs/libsndfile )
+        flac? ( media-libs/flac )
         jack? ( media-sound/jack-audio-connection-kit )
         system-mpcdec? ( media-sound/musepack-tools )
         system-tremor? ( media-libs/tremor )
@@ -36,7 +36,7 @@ src_configure() {
                 $(use_enable alsa)
                 $(use_enable debugger)
                 $(use_enable jack)
-                $(use_with sndfile libsndfile)
+                $(use_with flac libflac)
                 $(use_with system-mpcdec external-mpcdec)
                 $(use_with system-tremor external-tremor)
                 $(use_with system-lzo external-lzo)
