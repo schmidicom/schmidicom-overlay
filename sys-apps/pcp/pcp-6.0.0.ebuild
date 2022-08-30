@@ -1,8 +1,7 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit eutils
+EAPI=8
 
 DESCRIPTION="Performance Co-Pilot, system performance and analysis framework"
 HOMEPAGE="https://pcp.io/"
@@ -21,6 +20,7 @@ DEPEND=" systemd? ( sys-apps/systemd )
                 dev-qt/qtsvg:5
                 dev-qt/qtconcurrent:5 )
          python? ( dev-lang/python )
+         dev-libs/openssl
          dev-libs/json-glib
          x11-libs/libXt
          acct-user/pcp"
@@ -43,8 +43,6 @@ src_configure() {
 
 src_compile() {
         addwrite /var/lib/tmp/
-        # Workaround
-        #export MAKEOPTS="-j1"
         emake
 }
 
