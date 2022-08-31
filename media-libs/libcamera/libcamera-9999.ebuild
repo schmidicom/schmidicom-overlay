@@ -23,7 +23,8 @@ LICENSE="Apache-2.0 BSD CC0-1.0 CC-BY-SA-4.0 GPL-2 GPL-2+ LGPL-2.1 MIT"
 SLOT="0"
 IUSE="test-programm +v4l2"
 
-DEPEND="dev-libs/libyaml
+DEPEND="dev-python/pyyaml
+	dev-python/ply
 	dev-libs/openssl
 	virtual/udev
 	test-programm? ( dev-qt/qtcore:5
