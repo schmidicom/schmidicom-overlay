@@ -27,14 +27,16 @@ DEPEND="dev-python/pyyaml
 	dev-python/ply
 	dev-libs/openssl
 	virtual/udev
-	test-programm? ( dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtwidgets:5
-			dev-qt/qttools:5
-			media-libs/tiff
-			media-libs/libsdl2
-			x11-libs/libdrm
-			virtual/jpeg )"
+	test-programm? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		dev-qt/qttools:5
+		media-libs/tiff
+		media-libs/libsdl2
+		x11-libs/libdrm
+		virtual/jpeg
+	)"
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
