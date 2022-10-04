@@ -26,10 +26,6 @@ src_unpack() {
 	rm ${S}/_gpgbuilder ${S}/control.tar.gz ${S}/data.tar.xz ${S}/debian-binary
 }
 
-#src_prepare() {
-#	true
-#}
-
 src_install() {
 	cp -a ${PORTAGE_BUILDDIR}/work/* ${D}/
 }
