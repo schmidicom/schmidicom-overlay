@@ -5,16 +5,17 @@ EAPI=8
 
 DESCRIPTION="Synology Drive Client"
 HOMEPAGE="https://www.synology.com/de-de/dsm/feature/drive"
-SRC_URI="https://global.download.synology.com/download/Utility/SynologyDriveClient/3.1.0-12923/Ubuntu/Installer/x86_64/synology-drive-client-12923.x86_64.deb -> ${P}.deb"
+SRC_URI="https://global.download.synology.com/download/Utility/SynologyDriveClient/3.2.0-13238/Ubuntu/Installer/x86_64/synology-drive-client-13238.x86_64.deb -> ${P}.deb"
 
 LICENSE="Synology"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE=""
+IUSE="nautilus"
 
 DEPEND="dev-libs/glib
 	x11-libs/gtk+:2
-	virtual/libc"
+	virtual/libc
+	nautilus? ( gnome-base/nautilus )"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -28,4 +29,8 @@ src_unpack() {
 
 src_install() {
 	cp -a ${PORTAGE_BUILDDIR}/work/* ${D}/
+
+	if ! use nautilus ; then
+		rm -r ${D}/usr/lib/nautilus
+	fi
 }
