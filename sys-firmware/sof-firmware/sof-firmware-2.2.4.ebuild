@@ -34,8 +34,9 @@ src_install() {
 	mkdir -p ${D}/usr/bin || die
 
 	cd ${S}
-	rsync -a sof*v${PV} ${D}/lib/firmware/intel/
-	ln -s sof-v${PV} ${D}/lib/firmware/intel/sof
+	rsync -a sof-tplg-v${PV} ${D}/lib/firmware/intel/
+	rsync -a sof-v${PV} ${D}/lib/firmware/intel/
 	ln -s sof-tplg-v${PV} ${D}/lib/firmware/intel/sof-tplg
+	ln -s sof-v${PV} ${D}/lib/firmware/intel/sof
 	rsync tools-v${PV}/* ${D}/usr/bin/
 }
