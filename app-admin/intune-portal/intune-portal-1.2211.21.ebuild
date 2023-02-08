@@ -6,7 +6,7 @@ inherit systemd
 
 DESCRIPTION="Microsoft Intune"
 HOMEPAGE="https://learn.microsoft.com/en-us/mem/intune/user-help/enroll-device-linux"
-SRC_URI="https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/i/${PN}/${PN}_${PV}_amd64.deb -> ${P}.deb"
+SRC_URI="https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/i/${PN}/${PN}_${PV}_amd64.deb -> ${P}.deb"
 
 LICENSE=""
 SLOT="0"
@@ -18,7 +18,7 @@ DEPEND="app-crypt/libsecret
 	dev-db/sqlite
 	dev-libs/glib
 	dev-libs/glib
-	dev-libs/openssl:0/1.1
+	dev-libs/openssl:0/3
 	net-libs/libsoup
 	net-libs/webkit-gtk:4
 	net-misc/curl
