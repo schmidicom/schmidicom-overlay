@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 KEYWORDS="x86 amd64"
-IUSE="doc firewalld libvirt lvm networkmanager policykit -pcp +ssh +client"
+IUSE="doc firewalld libvirt lvm networkmanager policykit +ssh +client"
 SLOT="0"
 
 DEPEND="firewalld? ( net-firewall/firewalld )
@@ -24,7 +24,6 @@ DEPEND="firewalld? ( net-firewall/firewalld )
         networkmanager? ( net-misc/networkmanager )
         policykit? ( sys-auth/polkit )
         !policykit? ( app-admin/sudo )
-        pcp? ( sys-apps/pcp )
         ssh? ( net-libs/libssh[server] )
         dev-util/gdbus-codegen
         dev-libs/json-glib
@@ -39,10 +38,10 @@ PDEPEND="libvirt? (
 src_configure() {
         econf \
                 $(use_enable doc) \
-                $(use_enable pcp) \
                 $(use_enable ssh) \
                 $(use_enable client cockpit-client) \
-                $(use_enable policykit polkit)
+                $(use_enable policykit polkit) \
+                --disable-pcp
 }
 
 src_compile() {
