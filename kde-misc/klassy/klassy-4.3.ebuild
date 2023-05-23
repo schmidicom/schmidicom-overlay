@@ -3,8 +3,8 @@
 
 EAPI=8
 
-KFMIN=5.25.80
-inherit ecm
+KFMIN=5.27.5
+inherit ecm plasma.kde.org
 
 DESCRIPTION="Klassy is a highly customizable binary Window Decoration and Application Style plugin for recent versions of the KDE Plasma desktop."
 HOMEPAGE="https://github.com/paulmcauley/klassy"
