@@ -31,6 +31,7 @@ DEPEND="
 	mbedtls? ( net-libs/mbedtls:= )
 	openssl? ( dev-libs/openssl )
 	sys-libs/glibc
+	sys-libs/libcap-ng
 "
 RDEPEND="${DEPEND}
 	acct-group/openvpn
