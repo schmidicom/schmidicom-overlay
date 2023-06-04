@@ -29,8 +29,7 @@ DEPEND="
 	iproute2? ( sys-apps/iproute2[-minimal] )
 	systemd? ( sys-apps/systemd )
 	mbedtls? ( net-libs/mbedtls:= )
-	openssl? ( dev-libs/openssl
-		<dev-libs/openssl-3.0.0:0 )
+	openssl? ( dev-libs/openssl )
 	sys-libs/glibc
 "
 RDEPEND="${DEPEND}
