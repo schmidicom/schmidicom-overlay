@@ -39,5 +39,5 @@ src_install() {
 	systemd_dounit ${FILESDIR}/rustdesk-hbbr.service || die "Cannot install Service-Unit"
 	systemd_dounit ${FILESDIR}/rustdesk-hbbs.service || die "Cannot install Service-Unit"
 	keepdir /var/lib/rustdesk-server/
-	dodoc LICENSE 
+	dodoc LICENSE
 }
