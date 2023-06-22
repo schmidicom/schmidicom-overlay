@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit systemd
+inherit systemd tmpfiles pam desktop
 
 DESCRIPTION="Microsoft Intune"
 HOMEPAGE="https://learn.microsoft.com/en-us/mem/intune/user-help/enroll-device-linux"
@@ -17,7 +17,7 @@ DEPEND="app-crypt/libsecret
 	app-accessibility/at-spi2-core
 	dev-db/sqlite
 	dev-libs/glib
-	dev-libs/glib
+	dev-libs/msalsdk-dbusclient
 	dev-libs/openssl:0/3
 	net-libs/libsoup
 	net-libs/webkit-gtk:4
@@ -39,17 +39,25 @@ S=${WORKDIR}
 src_unpack() {
 	unpack ${A}
 	unpack ${S}/data.tar.xz
-	rm ${S}/control.tar.xz ${S}/data.tar.xz ${S}/debian-binary
 }
 
 src_install() {
-	systemd_douserunit ${PORTAGE_BUILDDIR}/work/lib/systemd/user/intune-agent.service
-	systemd_douserunit ${PORTAGE_BUILDDIR}/work/lib/systemd/user/intune-agent.timer
-	rm -r ${PORTAGE_BUILDDIR}/work/lib
+	systemd_dounit ${WORKDIR}/lib/systemd/system/intune-daemon.service
+	systemd_dounit ${WORKDIR}/lib/systemd/system/intune-daemon.socket
+	systemd_douserunit ${WORKDIR}/lib/systemd/user/intune-agent.service
+	systemd_douserunit ${WORKDIR}/lib/systemd/user/intune-agent.timer
 
-	mkdir -p ${PORTAGE_BUILDDIR}/work/lib64/security
-	mv ${PORTAGE_BUILDDIR}/work/usr/lib/x86_64-linux-gnu/security/pam_intune.so ${PORTAGE_BUILDDIR}/work/lib64/security
-	rm -r ${PORTAGE_BUILDDIR}/work/usr/lib/x86_64-linux-gnu
+	dotmpfiles ${WORKDIR}/urs/lib/tmpfiles.d/intune.conf
 
-	cp -a ${PORTAGE_BUILDDIR}/work/* ${D}/
+	domenu ${WORKDIR}/usr/share/applications/intune-portal.desktop
+	doicon -s 48 ${WORKDIR}/usr/share/icons/hicolor/48x48/apps/intune.png
+
+	insinto /usr/share/polkit-1/actions
+	doins ${WORKDIR}/urs/share/polkit-1/actions/com.microsoft.intune.policy
+
+	into "$(getpam_mod_dir)"
+	dolib.so ${WORKDIR}/urs/lib/x86_64-linux-gnu/security/pam_intune.so
+
+	mkdir -p ${D}/opt/microsoft
+	cp -a ${WORKDIR}/opt/microsoft/intune ${D}/opt/microsoft/
 }
