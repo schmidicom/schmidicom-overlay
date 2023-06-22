@@ -47,16 +47,16 @@ src_install() {
 	systemd_douserunit ${WORKDIR}/lib/systemd/user/intune-agent.service
 	systemd_douserunit ${WORKDIR}/lib/systemd/user/intune-agent.timer
 
-	dotmpfiles ${WORKDIR}/urs/lib/tmpfiles.d/intune.conf
+	dotmpfiles ${WORKDIR}/usr/lib/tmpfiles.d/intune.conf
 
 	domenu ${WORKDIR}/usr/share/applications/intune-portal.desktop
 	doicon -s 48 ${WORKDIR}/usr/share/icons/hicolor/48x48/apps/intune.png
 
 	insinto /usr/share/polkit-1/actions
-	doins ${WORKDIR}/urs/share/polkit-1/actions/com.microsoft.intune.policy
+	doins ${WORKDIR}/usr/share/polkit-1/actions/com.microsoft.intune.policy
 
 	into "$(getpam_mod_dir)"
-	dolib.so ${WORKDIR}/urs/lib/x86_64-linux-gnu/security/pam_intune.so
+	dolib.so ${WORKDIR}/usr/lib/x86_64-linux-gnu/security/pam_intune.so
 
 	mkdir -p ${D}/opt/microsoft
 	cp -a ${WORKDIR}/opt/microsoft/intune ${D}/opt/microsoft/
