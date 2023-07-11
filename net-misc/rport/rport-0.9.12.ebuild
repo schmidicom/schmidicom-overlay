@@ -16,7 +16,8 @@ IUSE="+client server"
 
 S=${WORKDIR}/${P}
 
-DEPEND="acct-user/rport"
+DEPEND="acct-user/rport
+	sys-libs/glibc"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -49,4 +50,6 @@ src_install() {
 		insinto /etc/rport
 		doins rportd.example.conf
 	fi
+	diropts -o rport -g rport
+	keepdir /var/log/rport
 }
