@@ -49,6 +49,7 @@ src_install() {
 		systemd_dounit ${FILESDIR}/rportd.service
 		insinto /etc/rport
 		doins rportd.example.conf
+	diropts --onwer=rport --group=rport
 	keepdir /var/log/rport
 	fi
 }
