@@ -1,0 +1,16 @@
+[Unit]
+Description=rport Remote Management Client
+ConditionFileIsExecutable=/usr/bin/rport
+StartLimitIntervalSec=5
+StartLimitBurst=10
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/bin/rport "-c" "/etc/rport/rport.conf"
+User=rport
+Restart=always
+RestartSec=120
+EnvironmentFile=-/etc/conf.d/rport
+
+[Install]
+WantedBy=multi-user.target
