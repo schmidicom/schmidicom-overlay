@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit eutils pam
+EAPI=8
+inherit autotools pam
 
 DESCRIPTION="Server Administration Web Interface"
 HOMEPAGE="http://cockpit-project.org/"
@@ -34,6 +34,12 @@ RDEPEND="${DEPEND}"
 PDEPEND="libvirt? (
 		sys-apps/cockpit-machines
 		app-emulation/libvirt )"
+
+src_prepare() {
+	eapply_user
+	echo "m4_define(VERSION_NUMBER, [${PV}])" > version.m4
+	eautoreconf
+}
 
 src_configure() {
         econf \
