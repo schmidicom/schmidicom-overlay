@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
+DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines, with secureboot and more."
 HOMEPAGE="https://github.com/tianocore/edk2"
 SRC_URI="https://res.messerligroup.com/deploy/${PN}/${P}.tar.gz"
 
