@@ -29,7 +29,8 @@ DEPEND="firewalld? ( net-firewall/firewalld )
 	dev-libs/json-glib
 	net-libs/nodejs[npm]
 	net-libs/glib-networking
-	sys-fs/udisks"
+	sys-fs/udisks
+	dev-python/pip"
 RDEPEND="${DEPEND}"
 PDEPEND="libvirt? (
 		sys-apps/cockpit-machines
