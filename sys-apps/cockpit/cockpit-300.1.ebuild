@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 KEYWORDS="x86 amd64"
-IUSE="doc firewalld libvirt lvm networkmanager policykit +ssh +client"
+IUSE="doc firewalld libvirt lvm networkmanager policykit +ssh"
 SLOT="0"
 
 DEPEND="firewalld? ( net-firewall/firewalld )
@@ -29,8 +29,7 @@ DEPEND="firewalld? ( net-firewall/firewalld )
 	dev-libs/json-glib
 	net-libs/nodejs[npm]
 	net-libs/glib-networking
-	sys-fs/udisks
-	dev-python/pip"
+	sys-fs/udisks"
 RDEPEND="${DEPEND}"
 PDEPEND="libvirt? (
 		sys-apps/cockpit-machines
@@ -38,17 +37,16 @@ PDEPEND="libvirt? (
 
 src_prepare() {
 	eapply_user
-	echo "m4_define(VERSION_NUMBER, [${PV}])" > version.m4
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(use_enable doc) \
-		$(use_enable ssh) \
-		$(use_enable client cockpit-client) \
-		$(use_enable client pybridge) \
 		$(use_enable policykit polkit) \
+		$(use_enable ssh) \
+		$(use_enable doc) \
+		--disable-pybridge \
+		--disable-cockpit-client \
 		--disable-pcp
 }
 
