@@ -1,16 +1,15 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eutils apache-module
+EAPI=7
+inherit apache-module
 
 DESCRIPTION="MaxMind DB Apache Module"
 HOMEPAGE="http://maxmind.github.io/mod_maxminddb/"
-SRC_URI="https://github.com/maxmind/mod_maxminddb/releases/download/$PV/$P.tar.gz"
+SRC_URI="https://github.com/maxmind/mod_maxminddb/releases/download/${PV}/${P}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 IUSE=""
 SLOT="0"
 
@@ -32,12 +31,6 @@ src_unpack() {
 
 src_configure() {
 	econf || die "econf failed"
-}
-
-src_compile() {
-	# "apache-module_src_compile" builds not working library.
-	# https://github.com/maxmind/mod_maxminddb/issues/38
-	emake || die "emake failed"
 }
 
 src_install() {
