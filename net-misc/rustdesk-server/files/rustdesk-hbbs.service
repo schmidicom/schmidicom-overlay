@@ -4,7 +4,8 @@ Description=Rustdesk Signal Server
 [Service]
 Type=simple
 LimitNOFILE=1000000
-ExecStart=/usr/sbin/hbbs
+EnvironmentFile=/etc/conf.d/rustdesk-server
+ExecStart=/usr/sbin/hbbs $HBBS_OPTS
 WorkingDirectory=/var/lib/rustdesk-server/
 Restart=always
 # Restart service after 10 seconds if node service crashes
