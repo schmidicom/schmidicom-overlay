@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="sys-devel/gcc
+	sys-libs/glibc"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
