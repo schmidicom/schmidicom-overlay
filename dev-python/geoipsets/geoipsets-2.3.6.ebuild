@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..12} )
 inherit distutils-r1 systemd
 
 DESCRIPTION="Python package to generate country-specific IP network ranges consumable by both iptables/ipset and nftables."
