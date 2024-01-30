@@ -20,7 +20,7 @@ index e8309a4..99e4fad 100644
  LimitNOFILE=1000000
 -ExecStart=/usr/bin/hbbr
 +EnvironmentFile=/etc/conf.d/rustdesk-server
-+ExecStart=/usr/bin/hbbr HBBR_OPTS
++ExecStart=/usr/bin/hbbr $HBBR_OPTS
  WorkingDirectory=/var/lib/rustdesk-server/
 -User=
 -Group=
