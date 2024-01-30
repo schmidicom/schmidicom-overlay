@@ -1,7 +1,3 @@
-# Options for Rustdesk Relay Server
-#    -k, --key <KEY>                       Only allow the client with the same key
-#    -p, --port <NUMBER(default=21117)>    Sets the listening port
-HBBR_OPTS=""
 
 # Options for Rustdesk Signal Server
 #    -c, --config <FILE>                   Sets a custom config file
@@ -16,3 +12,8 @@ HBBR_OPTS=""
 #    -s, --serial <NUMBER(default=0)>      Sets configure update serial number
 #    -u, --software-url <URL>              Sets download url of RustDesk software of newest version
 HBBS_OPTS=""
+
+# Options for Rustdesk Relay Server
+#    -k, --key <KEY>                       Only allow the client with the same key
+#    -p, --port <NUMBER(default=21117)>    Sets the listening port
+HBBR_OPTS=""
