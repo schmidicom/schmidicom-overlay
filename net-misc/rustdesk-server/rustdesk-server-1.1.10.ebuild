@@ -299,7 +299,7 @@ inherit cargo systemd
 
 DESCRIPTION="RustDesk Server"
 HOMEPAGE="https://rustdesk.com/"
-SRC_URI="https://github.com/rustdesk/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/rustdesk/${PN}/archive/refs/tags/${PV}-3.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}"
 
 LICENSE="AGPL-3"
