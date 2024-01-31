@@ -311,7 +311,7 @@ DEPEND="sys-devel/gcc
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-S=${WORKDIR}/${P}
+S=${WORKDIR}/${P}-3
 
 PATCHES=(
 	"${FILESDIR}"/0001-fix-systemd-service-units.patch
