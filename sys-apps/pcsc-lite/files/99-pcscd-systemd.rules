@@ -1,0 +1,3 @@
+# Make sure that the devices can be used under the user pcscd
+
+ENV{ID_SMARTCARD_READER}=="1", GROUP="pcscd"

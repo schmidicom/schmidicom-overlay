@@ -1,4 +1,4 @@
 # Make sure that the devices can be used under the user pcscd
 # and that the pcscd service is started under OpenRC.
 
-ACTION=="add", ENV{ID_SMARTCARD_READER}=="1", GROUP="pcscd", TAG+="systemd", RUN+="pcscd.sh"
+ACTION=="add", ENV{ID_SMARTCARD_READER}=="1", GROUP="pcscd", RUN+="pcscd.sh"
