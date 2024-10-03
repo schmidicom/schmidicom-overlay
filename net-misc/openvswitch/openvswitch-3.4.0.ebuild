@@ -36,7 +36,11 @@ src_configure() {
 		$(use_with debug) \
 		$(use_enable caps libcapng) \
 		$(use_enable ssl) \
-		$(use_enable strip ndebug)
+		$(use_enable strip ndebug) \
+		--with-rundir=/run/openvswitch \
+		--with-logdir=/var/log/openvswitch \
+		--with-pkdir=/etc/ssl/openvswitch \
+		--with-dbdir=/var/lib/openvswitch
 }
 
 src_install() {
