@@ -32,7 +32,7 @@ BDEPEND="
 CONFIG_CHECK="OPENVSWITCH"
 
 src_configure() {
-	econf \
+	PYTHON3="${PYTHON}" CONFIG_SHELL="${BROOT}"/bin/bash SHELL="${BROOT}"/bin/bash econf \
 		$(use_with debug) \
 		$(use_enable caps libcapng) \
 		$(use_enable ssl) \
@@ -61,4 +61,6 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins rhel/etc_logrotate.d_openvswitch openvswitch
+
+	find "${ED}" -name '*.la' -delete || die
 }
