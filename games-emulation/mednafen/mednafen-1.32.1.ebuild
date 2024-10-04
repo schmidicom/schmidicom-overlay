@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Mednafen is a portable, utilizing OpenGL and SDL, argument(command-line)-driven multi-system emulator."
 HOMEPAGE="https://mednafen.github.io/"
