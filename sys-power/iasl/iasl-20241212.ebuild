@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="The ACPI Component Architecture (ACPICA) project provides an open-source operating system-independent implementation of the Advanced Configuration and Power Interface specification (ACPI)"
 HOMEPAGE="https://www.acpica.org/"
-SRC_URI="https://github.com/acpica/acpica/archive/refs/tags/R06_28_23.tar.gz"
+SRC_URI="https://github.com/acpica/acpica/archive/refs/tags/R2024_12_12.tar.gz"
 
 LICENSE="iASL"
 SLOT="0"
@@ -17,8 +17,4 @@ RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/bison
 	sys-devel/flex"
 
-S=${WORKDIR}/acpica-R06_28_23
-
-PATCHES=(
-	"${FILESDIR}"/fix_issue_with_GCC12.patch
-)
+S=${WORKDIR}/acpica-R2024_12_12
