@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 systemd
 
 DESCRIPTION="Python package to generate country-specific IP network ranges consumable by both iptables/ipset and nftables."
