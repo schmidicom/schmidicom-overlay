@@ -20,7 +20,7 @@ DEPEND="${PYTHON_DEPS}
 	ssl? ( dev-libs/openssl )"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		~dev-python/ovs-3.4.1[${PYTHON_USEDEP}]
+		~dev-python/ovs-3.6.0[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	')"
