@@ -1,0 +1,18 @@
+[Unit]
+Description=Open vSwitch database server
+Documentation=man:ovsdb-server
+After=network-pre.target
+Before=network.target
+
+[Service]
+LimitNOFILE=1048576
+Type=exec
+Restart=on-failure
+WorkingDirectory=/run/openvswitch
+EnvironmentFile=-/etc/conf.d/openvswitch
+ExecStart=/usr/bin/ovsdb-server --remote=punix:/run/openvswitch/db.sock --pidfile $OVSDB_SERVER_OPTS
+ExecReload=/usr/bin/ovs-appctl --target=ovsdb-server ovsdb-server/reload
+ExecStop=/usr/bin/ovs-appctl --target=ovsdb-server exit
+
+[Install]
+WantedBy=multi-user.target

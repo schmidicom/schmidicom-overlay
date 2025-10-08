@@ -1,0 +1,6 @@
+# Extra options to pass to ovs-vswitchd
+# "--mlockall" helps to avoid networking interruptions due to system memory pressure.
+OVS_VSWITCH_OPTS="--mlockall"
+
+# Extra options to pass to ovsdb-server
+OVSDB_SERVER_OPTS=""

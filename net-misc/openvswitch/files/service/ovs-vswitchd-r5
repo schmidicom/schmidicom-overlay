@@ -1,0 +1,20 @@
+[Unit]
+Description=Open vSwitch daemon
+Documentation=man:ovs-vswitchd
+After=ovsdb-server.service network-pre.target
+Before=network.target
+Requires=ovsdb-server.service
+AssertPathIsReadWrite=/run/openvswitch/db.sock
+
+[Service]
+LimitNOFILE=1048576
+Type=exec
+Restart=on-failure
+WorkingDirectory=/run/openvswitch
+EnvironmentFile=-/etc/conf.d/openvswitch
+ExecStartPre=/usr/bin/modprobe openvswitch
+ExecStart=/usr/bin/ovs-vswitchd unix:/run/openvswitch/db.sock --pidfile $OVS_VSWITCH_OPTS
+ExecStop=/usr/bin/ovs-appctl --target=ovs-vswitchd exit
+
+[Install]
+WantedBy=multi-user.target
