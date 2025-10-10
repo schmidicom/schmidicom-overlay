@@ -1,6 +1,10 @@
 # Extra options to pass to ovs-vswitchd
 # "--mlockall" helps to avoid networking interruptions due to system memory pressure.
-OVS_VSWITCH_OPTS="--mlockall"
+# "-vconsole:off" Disable Logging to stdout and stderr
+# "-vsyslog:X" Set Loglevel to syslog/journald
+OVS_VSWITCH_OPTS="--mlockall -vconsole:off -vsyslog:warn"
 
 # Extra options to pass to ovsdb-server
-OVSDB_SERVER_OPTS=""
+# "-vconsole:off" Disable Logging to stdout and stderr
+# "-vsyslog:X" Set Loglevel to syslog/journald
+OVSDB_SERVER_OPTS="-vconsole:off -vsyslog:warn"
