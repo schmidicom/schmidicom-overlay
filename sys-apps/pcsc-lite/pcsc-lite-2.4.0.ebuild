@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-single-r1 meson-multilib tmpfiles udev
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
@@ -16,25 +16,21 @@ KEYWORDS="amd64 arm arm64 x86"
 IUSE="policykit selinux"
 
 DEPEND="
-	policykit? ( >=sys-auth/polkit-0.111 )
+	policykit? ( sys-auth/polkit )
 	sys-apps/systemd
 	acct-group/openct
 	acct-group/pcscd
 	acct-user/pcscd
 	${PYTHON_DEPS}
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	selinux? ( sec-policy/selinux-pcscd )
 "
 BDEPEND="
         app-alternatives/lex
         virtual/pkgconfig
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-polkit-user.patch
-	"${FILESDIR}"/${PN}-systemd-user.patch
-)
 
 S="${WORKDIR}/${P}"
 
