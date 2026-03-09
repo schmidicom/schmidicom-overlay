@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit autotools linux-info python-single-r1 systemd tmpfiles
 
 DESCRIPTION="Production quality, multilayer virtual switch"
@@ -20,7 +20,7 @@ DEPEND="${PYTHON_DEPS}
 	ssl? ( dev-libs/openssl )"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		~dev-python/ovs-3.4.1[${PYTHON_USEDEP}]
+		~dev-python/ovs-3.7.0[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	')"
@@ -32,7 +32,7 @@ BDEPEND="
 CONFIG_CHECK="OPENVSWITCH"
 
 src_configure() {
-	PYTHON3="${PYTHON}" CONFIG_SHELL="${BROOT}"/bin/bash SHELL="${BROOT}"/bin/bash econf \
+	PYTHON3="${PYTHON}" CONFIG_SHELL="${BROOT}"/usr/bin/bash SHELL="${BROOT}"/usr/bin/bash econf \
 		$(use_with debug) \
 		$(use_enable caps libcapng) \
 		$(use_enable ssl) \
@@ -50,17 +50,18 @@ src_install() {
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
 
-	newconfd "${FILESDIR}/confd/ovs-vswitchd-r2" ovs-vswitchd
-	newconfd "${FILESDIR}/confd/ovsdb-server-r2" ovsdb-server
+	newconfd "${FILESDIR}/confd/openvswitch-r1" openvswitch
 
-	systemd_newunit "${FILESDIR}/service/ovs-vswitchd-r3" ovs-vswitchd.service
-	systemd_newunit "${FILESDIR}/service/ovsdb-server-r3" ovsdb-server.service
-	systemd_newunit rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service ovs-delete-transient-ports.service
+	systemd_newunit "${FILESDIR}/service/ovs-vswitchd-r5" ovs-vswitchd.service
+	systemd_newunit "${FILESDIR}/service/ovsdb-server-r5" ovsdb-server.service
 
 	newtmpfiles "${FILESDIR}/tmpfiles/openvswitch" openvswitch.conf
 
-	insinto /etc/logrotate.d
-	newins rhel/etc_logrotate.d_openvswitch openvswitch
-
 	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	ewarn "Before starting the "ovsdb-server" service, you must ensure that"
+	ewarn "a database file exists under \"/var/lib/openvswitch/conf.db\". If it"
+	ewarn "doesn't already exist, you must create it using \"ovsdb-tool create.\""
 }
