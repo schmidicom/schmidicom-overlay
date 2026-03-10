@@ -8,12 +8,13 @@ AssertPathIsReadWrite=/run/openvswitch/db.sock
 
 [Service]
 LimitNOFILE=1048576
-Type=exec
+Type=forking
 Restart=on-failure
 WorkingDirectory=/run/openvswitch
 EnvironmentFile=-/etc/conf.d/openvswitch
+PIDFile=/run/openvswitch/ovs-vswitchd.pid
 ExecStartPre=/usr/bin/modprobe openvswitch
-ExecStart=/usr/bin/ovs-vswitchd unix:/run/openvswitch/db.sock --pidfile $OVS_VSWITCH_OPTS
+ExecStart=/usr/bin/ovs-vswitchd unix:/run/openvswitch/db.sock --pidfile=/run/openvswitch/ovs-vswitchd.pid --detach $OVS_VSWITCH_OPTS
 ExecStop=/usr/bin/ovs-appctl --target=ovs-vswitchd exit
 
 [Install]
