@@ -1,0 +1,15 @@
+diff --git a/iwqt.desktop b/iwqt.desktop
+index 8837501..7d0fc7b 100644
+--- a/iwqt.desktop
++++ b/iwqt.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+-Version=0.0.1
++Version=0.0.3
+ Name=IWQt
+ Comment=An iwd network applet for linux systems
+-Exec=/usr/local/bin/iwqt
+-Icon=/usr/local/share/iwqt/icon.svg
++Exec=/usr/bin/iwqt
++Icon=/usr/share/iwqt/icon.svg
