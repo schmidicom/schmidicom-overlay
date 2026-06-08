@@ -50,8 +50,8 @@ src_install() {
 	systemd_dounit ${FILESDIR}/rustdesk-hbbs.service || die "Cannot install Service-Unit"
 	doconfd ${FILESDIR}/rustdesk-server || die "Cannot install Config-File"
 
-	keepdir /var/l{ib,og}/rustdesk-server || die "Failed to create Folder"
-	fowners -R rustdesk-server:rustdesk-server /var/l{ib,og}/rustdesk-server || die "Failed to set Owner"
+	keepdir /var/log/rustdesk-server || die "Failed to create Folder"
+	fowners -R rustdesk-server:rustdesk-server /var/log/rustdesk-server || die "Failed to set Owner"
 
 	dodoc ${FILESDIR}/LICENSE || die "Cannto install LICENSE File"
 }
