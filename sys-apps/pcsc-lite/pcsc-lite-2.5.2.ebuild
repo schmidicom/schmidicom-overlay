@@ -17,8 +17,7 @@ IUSE="policykit selinux"
 
 DEPEND="
 	policykit? ( sys-auth/polkit )
-	sys-apps/systemd
-	acct-group/openct
+	virtual/service-manager[systemd]
 	acct-group/pcscd
 	acct-user/pcscd
 	${PYTHON_DEPS}
