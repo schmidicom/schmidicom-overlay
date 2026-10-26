@@ -36,7 +36,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	echo "module: ${EPREFIX}/usr/$(get_libdir)/libt2cs11.so" > ${PN}.module \
+	dosym -r ${EPREFIX}/usr/$(get_libdir)/libt2cs11.so /usr/$(get_libdir)/pkcs11/libt2cs11.so
+	echo "module: libt2cs11.so" > ${PN}.module \
 		|| die "Failed to generate p11-kit module configuration"
 	insinto /usr/share/p11-kit/modules
 	doins ${PN}.module
